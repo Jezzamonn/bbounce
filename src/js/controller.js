@@ -27,7 +27,7 @@ export default class Controller {
         const layerDist = 0.5 * 38;
 
         for (let l = 0; l <= layers; l++) {
-            let numCircles = 2 * l;
+            let numCircles = 4 * l;
             if (numCircles < 1) {
                 numCircles = 1;
             }
@@ -54,7 +54,7 @@ export default class Controller {
 
         const bounceAmt = animAmt % 1;
         const heightAmt = bounceAmt * (1 - bounceAmt) * 4;
-        const height = 25;
+        const height = 10;
         const bounceHeight = height * heightAmt;
         const groundPosition = y + height / 2;
 
