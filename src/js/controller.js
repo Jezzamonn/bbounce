@@ -24,8 +24,9 @@ export default class Controller {
         const layers = 5;
 
         for (let l = -layers; l <= layers; l++) {
-            const x = 30 * l;
-            this.renderBall(context, x, 0, (10 + l) * this.animAmt);
+            const x = 40 * l;
+            const bounceMult = 10 + Math.abs(l);
+            this.renderBall(context, x, 0, bounceMult * this.animAmt);
         }
     }
 
@@ -41,7 +42,7 @@ export default class Controller {
         const height = 50;
         const bounceHeight = height / 2 - height * heightAmt;
 
-        context.arc(x, y + bounceHeight, 20, 0, 2 * Math.PI);
+        context.arc(x, y + bounceHeight, 12, 0, 2 * Math.PI);
         context.fill();
     }
 
