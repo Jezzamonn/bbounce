@@ -42,7 +42,7 @@ export default class Controller {
                 const x = l * layerDist * Math.cos(angle);
                 const y = l * layerDist * Math.sin(angle);
 
-                this.renderBall(context, x, y, size, bounceMult * this.animAmt);
+                this.renderBall(context, x, y, size, bounceMult * this.animAmt + angleAmt);
             }
         }
     }
