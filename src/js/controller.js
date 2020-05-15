@@ -24,12 +24,27 @@ export default class Controller {
      */
     render(context) {
         const layers = 5;
+        const layerDist = 38;
 
         for (let l = -layers; l <= layers; l++) {
-            const x = 38 * l;
+            const circumference = 2 * Math.PI * layerDist * l;
+            let numCircles = Math.ceil(circumference / layerDist);
+            if (numCircles < 0) {
+                numCircles = 1;
+            }
+
             const bounceMult = 10 + Math.abs(l);
             const size = 12 - 0.8 * Math.abs(l);
-            this.renderBall(context, x, 0, size, bounceMult * this.animAmt);
+
+            for (let c = 0; c < numCircles; c++) {
+                const angleAmt = c / numCircles;
+                const angle = 2 * Math.PI * (1 / 4 + angleAmt);
+
+                const x = layerDist * Math.cos(angle);
+                const y = layerDist * Math.sin(angle);
+
+                this.renderBall(context, x, y, size, bounceMult * this.animAmt);
+            }
         }
     }
 
@@ -42,7 +57,7 @@ export default class Controller {
         const heightAmt = bounceAmt * (1 - bounceAmt) * 4;
         const height = 50;
         const bounceHeight = height * heightAmt;
-        const groundPosition = height / 2;
+        const groundPosition = y + height / 2;
 
         const shadowPosition = groundPosition + size;
         const shadowAmt = 1 - heightAmt;
