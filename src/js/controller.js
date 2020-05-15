@@ -41,9 +41,15 @@ export default class Controller {
         const bounceAmt = animAmt % 1;
         const heightAmt = bounceAmt * (1 - bounceAmt) * 4;
         const height = 50;
-        const bounceHeight = height / 2 - height * heightAmt;
+        const bounceHeight = height * heightAmt;
+        const groundPosition = height / 2;
+        const shadowPosition = groundPosition + size;
 
-        context.arc(x, y + bounceHeight, size, 0, 2 * Math.PI);
+        context.arc(x, groundPosition - bounceHeight, size, 0, 2 * Math.PI);
+        context.fill();
+
+        context.beginPath();
+        context.ellipse(x, shadowPosition, size, 0.5 * size, 0, 0, 2 * Math.PI);
         context.fill();
     }
 
