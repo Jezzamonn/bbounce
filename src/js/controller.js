@@ -33,7 +33,7 @@ export default class Controller {
             }
 
             const bounceMult = 10 + Math.abs(l);
-            const size = 0.5 * (12 - 0.8 * Math.abs(l));
+            const size = 0.5 * (12 - 0.6 * Math.abs(l));
 
             for (let c = 0; c < numCircles; c++) {
                 const angleAmt = c / numCircles;
