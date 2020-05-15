@@ -33,7 +33,7 @@ export default class Controller {
             }
 
             const bounceMult = 10 + Math.abs(l);
-            const size = 12 - 0.8 * Math.abs(l);
+            const size = 0.5 * (12 - 0.8 * Math.abs(l));
 
             for (let c = 0; c < numCircles; c++) {
                 const angleAmt = c / numCircles;
@@ -54,7 +54,7 @@ export default class Controller {
 
         const bounceAmt = animAmt % 1;
         const heightAmt = bounceAmt * (1 - bounceAmt) * 4;
-        const height = 50;
+        const height = 25;
         const bounceHeight = height * heightAmt;
         const groundPosition = y + height / 2;
 
