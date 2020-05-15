@@ -26,7 +26,7 @@ export default class Controller {
         const layers = 5;
         const layerDist = 38;
 
-        for (let l = -layers; l <= layers; l++) {
+        for (let l = 0; l <= layers; l++) {
             const circumference = 2 * Math.PI * layerDist * l;
             let numCircles = Math.ceil(circumference / layerDist);
             if (numCircles < 1) {
