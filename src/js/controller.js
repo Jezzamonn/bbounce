@@ -23,7 +23,7 @@ export default class Controller {
      * @param {!CanvasRenderingContext2D} context
      */
     render(context) {
-        const layers = 10;
+        const layers = 20;
         const layerDist = 0.5 * 38;
 
         for (let l = 0; l <= layers; l++) {
