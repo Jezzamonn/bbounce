@@ -21,14 +21,22 @@ export default class Controller {
      * @param {!CanvasRenderingContext2D} context
      */
     render(context) {
+        this.renderBall(context, 0, 0, 4 * this.animAmt);
+    }
+
+    /**
+     * @param {!CanvasRenderingContext2D} context
+     */
+    renderBall(context, x, y, animAmt) {
         context.beginPath();
         context.fillStyle = 'black';
-        context.moveTo(0, 0);
-        context.arc(0, 0, 100, 0, 2 * Math.PI * this.animAmt);
-        context.fill();
 
-        context.scale(10, 10);
-        context.fillText(this.period * this.animAmt, 0, 0);
+        const bounceAmt = animAmt % 1;
+        const heightAmt = bounceAmt * (1 - bounceAmt) * 4;
+        const height = 30;
+
+        context.arc(x, y - height * heightAmt, 10, 0, 2 * Math.PI);
+        context.fill();
     }
 
 }
