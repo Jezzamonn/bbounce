@@ -29,7 +29,7 @@ export default class Controller {
         for (let l = -layers; l <= layers; l++) {
             const circumference = 2 * Math.PI * layerDist * l;
             let numCircles = Math.ceil(circumference / layerDist);
-            if (numCircles < 0) {
+            if (numCircles < 1) {
                 numCircles = 1;
             }
 
@@ -40,8 +40,8 @@ export default class Controller {
                 const angleAmt = c / numCircles;
                 const angle = 2 * Math.PI * (1 / 4 + angleAmt);
 
-                const x = layerDist * Math.cos(angle);
-                const y = layerDist * Math.sin(angle);
+                const x = l * layerDist * Math.cos(angle);
+                const y = l * layerDist * Math.sin(angle);
 
                 this.renderBall(context, x, y, size, bounceMult * this.animAmt);
             }
