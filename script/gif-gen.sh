@@ -17,7 +17,7 @@ out_filename="${out_dir}export_${current_commit}.gif"
 rm -r "$temp_dir" 2> /dev/null
 
 # output the frames
-node build/save-frames.bundle.js --width=500 --height=500 --fps=30 --out="$temp_dir"
+node build/save-frames.bundle.js --width=500 --height=500 --fps=30 --start=0.1  --out="$temp_dir"
 
 # Then bunch them together into a gif! (?)
 # Thanks Giphy Engineering!! https://engineering.giphy.com/how-to-make-gifs-with-ffmpeg/
