@@ -24,16 +24,17 @@ export default class Controller {
         const layers = 5;
 
         for (let l = -layers; l <= layers; l++) {
-            const x = 40 * l;
+            const x = 38 * l;
             const bounceMult = 10 + Math.abs(l);
-            this.renderBall(context, x, 0, bounceMult * this.animAmt);
+            const size = 12 - 0.8 * Math.abs(l);
+            this.renderBall(context, x, 0, size, bounceMult * this.animAmt);
         }
     }
 
     /**
      * @param {!CanvasRenderingContext2D} context
      */
-    renderBall(context, x, y, animAmt) {
+    renderBall(context, x, y, size, animAmt) {
         context.beginPath();
         context.fillStyle = 'black';
 
@@ -42,7 +43,7 @@ export default class Controller {
         const height = 50;
         const bounceHeight = height / 2 - height * heightAmt;
 
-        context.arc(x, y + bounceHeight, 12, 0, 2 * Math.PI);
+        context.arc(x, y + bounceHeight, size, 0, 2 * Math.PI);
         context.fill();
     }
 
