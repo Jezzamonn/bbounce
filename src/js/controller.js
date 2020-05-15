@@ -34,8 +34,9 @@ export default class Controller {
         const bounceAmt = animAmt % 1;
         const heightAmt = bounceAmt * (1 - bounceAmt) * 4;
         const height = 50;
+        const bounceHeight = height / 2 - height * heightAmt;
 
-        context.arc(x, y - height * heightAmt, 20, 0, 2 * Math.PI);
+        context.arc(x, y + bounceHeight, 20, 0, 2 * Math.PI);
         context.fill();
     }
 
