@@ -27,7 +27,7 @@ export default class Controller {
         const layerDist = 0.5 * 38;
 
         for (let l = 0; l <= layers; l++) {
-            let numCircles = 4 * l;
+            let numCircles = 6 * l;
             if (numCircles < 1) {
                 numCircles = 1;
             }
