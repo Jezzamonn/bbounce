@@ -35,6 +35,7 @@ export default class Controller {
      * @param {!CanvasRenderingContext2D} context
      */
     renderBall(context, x, y, size, animAmt) {
+        context.save();
         context.beginPath();
         context.fillStyle = 'black';
 
@@ -48,9 +49,11 @@ export default class Controller {
         context.arc(x, groundPosition - bounceHeight, size, 0, 2 * Math.PI);
         context.fill();
 
+        context.globalAlpha = 0.5;
         context.beginPath();
-        context.ellipse(x, shadowPosition, size, 0.5 * size, 0, 0, 2 * Math.PI);
+        context.ellipse(x, shadowPosition, heightAmt * size, heightAmt * 0.5 * size, 0, 0, 2 * Math.PI);
         context.fill();
+        context.restore();
     }
 
 }
