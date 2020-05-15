@@ -1,3 +1,5 @@
+import { slurp } from './util';
+
 export default class Controller {
 
     constructor() {
@@ -35,24 +37,27 @@ export default class Controller {
      * @param {!CanvasRenderingContext2D} context
      */
     renderBall(context, x, y, size, animAmt) {
-        context.save();
-        context.beginPath();
-        context.fillStyle = 'black';
 
         const bounceAmt = animAmt % 1;
         const heightAmt = bounceAmt * (1 - bounceAmt) * 4;
         const height = 50;
         const bounceHeight = height * heightAmt;
         const groundPosition = height / 2;
+
         const shadowPosition = groundPosition + size;
         const shadowAmt = 1 - heightAmt;
+        const shadowSize = slurp(0.4 * size, 0.9 * size, shadowAmt);
+        const shadowAlpha = slurp(0.1 * shadowAmt, 0.2 * shadowAmt, shadowAmt);
 
+        context.save();
+        context.beginPath();
+        context.fillStyle = 'black';
         context.arc(x, groundPosition - bounceHeight, size, 0, 2 * Math.PI);
         context.fill();
 
-        context.globalAlpha = 0.5;
+        context.globalAlpha = shadowAlpha;
         context.beginPath();
-        context.ellipse(x, shadowPosition, shadowAmt * size, shadowAmt * 0.5 * size, 0, 0, 2 * Math.PI);
+        context.ellipse(x, shadowPosition, shadowSize, 0.4 * shadowSize, 0, 0, 2 * Math.PI);
         context.fill();
         context.restore();
     }
