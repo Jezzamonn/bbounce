@@ -4,7 +4,7 @@ export default class Controller {
 
     constructor() {
         this.animAmt = 0;
-        this.period = 10;
+        this.period = 15;
     }
 
     /**
@@ -24,7 +24,7 @@ export default class Controller {
      */
     render(context) {
         const layers = 20;
-        const layerDist = 0.5 * 38;
+        const layerDist = 0.25 * 38;
 
         for (let l = 0; l <= layers; l++) {
             let numCircles = 6 * l;
@@ -33,7 +33,7 @@ export default class Controller {
             }
 
             const bounceMult = 10 + Math.abs(l);
-            const size = 0.5 * (12 - 0.6 * Math.abs(l));
+            const size = 0.25 * (12 - 0.6 * Math.abs(l));
 
             for (let c = 0; c < numCircles; c++) {
                 const angleAmt = c / numCircles;
