@@ -23,17 +23,18 @@ export default class Controller {
      * @param {!CanvasRenderingContext2D} context
      */
     render(context) {
-        const layers = 20;
+        const layers = 30;
         const layerDist = 0.25 * 38;
 
         for (let l = 0; l <= layers; l++) {
+            const lAmt = l / layers;
             let numCircles = 6 * l;
             if (numCircles < 1) {
                 numCircles = 1;
             }
 
             const bounceMult = 10 + Math.abs(l);
-            const size = 0.25 * (12 - 0.4 * Math.abs(l));
+            const size = slurp(3, 0.5, lAmt * lAmt);
 
             for (let c = 0; c < numCircles; c++) {
                 const angleAmt = c / numCircles;
