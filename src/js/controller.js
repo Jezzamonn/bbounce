@@ -2,7 +2,7 @@ export default class Controller {
 
     constructor() {
         this.animAmt = 0;
-        this.period = 3;
+        this.period = 10;
     }
 
     /**
@@ -21,7 +21,12 @@ export default class Controller {
      * @param {!CanvasRenderingContext2D} context
      */
     render(context) {
-        this.renderBall(context, 0, 0, 4 * this.animAmt);
+        const layers = 5;
+
+        for (let l = -layers; l <= layers; l++) {
+            const x = 30 * l;
+            this.renderBall(context, x, 0, (10 + l) * this.animAmt);
+        }
     }
 
     /**
